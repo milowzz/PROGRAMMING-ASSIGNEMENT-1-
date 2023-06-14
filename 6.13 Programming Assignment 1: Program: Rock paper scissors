@@ -1,0 +1,95 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+   const int ROCK = 0;
+   const int PAPER = 1;
+   const int SCISSORS = 2;
+
+   int seed;
+   cin >> seed;
+   srand(seed);
+
+   string player1, player2;
+   int NumofRounds;
+   int playerVal1, playerVal2;
+   int countPlayer1 =0;
+   int countPlayer2 =0;
+  // int count=0;
+   cin >> player1 >> player2;
+   cin >> NumofRounds;
+   
+   // take in number of rounds that are greater than one
+   while(NumofRounds <= 0){
+      cout << "Rounds must be > 0" << endl;
+      cin >> NumofRounds;
+   }
+   cout << player1 << " vs " << player2 << " for " << NumofRounds << " rounds" << endl;
+   
+
+  
+      
+   //for loop produces random values for each round
+   for( int i =0; i <NumofRounds; i++){
+      playerVal1 = rand() % 3;
+      playerVal2 = rand() % 3;
+      
+   //if a tie happens then output tie and do not count it as a round 
+      while(playerVal1 == playerVal2){
+         cout << "Tie" << endl;
+         playerVal1 = rand() % 3;
+         playerVal2 = rand() % 3;
+   }
+   //output different winners and count the amount of rounds won
+   if((playerVal1 == ROCK) && (playerVal2 == SCISSORS)){
+      cout << player1 << " wins with rock" << endl;
+      countPlayer1++;
+   }
+   else if((playerVal1 == SCISSORS) && (playerVal2 == PAPER)){
+      cout << player1 << " wins with scissors" << endl;
+      countPlayer1++;
+   }
+   else if((playerVal1 == PAPER) && (playerVal2 == ROCK)){
+      cout << player1 << " wins with paper" << endl;
+      countPlayer1++;
+   }
+   else if((playerVal2 == ROCK) && (playerVal1 == SCISSORS)){
+      cout << player2 << " wins with rock" << endl;
+      countPlayer2++;
+   }
+   else if((playerVal2 == SCISSORS) && (playerVal1 == PAPER)){
+      cout << player2 << " wins with scissors" << endl;
+      countPlayer2++;
+   }
+   else if((playerVal2 == PAPER) && (playerVal1 == ROCK)){
+      cout << player2 << " wins with paper" << endl;
+      countPlayer2++;
+   }
+    
+   
+   }
+   
+   //when the for loop breaks then output the winner 
+   if(countPlayer1 > countPlayer2){
+      cout << player1 << " wins " << countPlayer1 << " and " <<  player2 << " wins " << countPlayer2 << endl;
+   }
+   else if(countPlayer2 > countPlayer1) {
+      cout << player2 << " wins " << countPlayer2 << " and " << player1 << " wins " << countPlayer1 << endl;
+   }
+   else{
+      cout << player1 << " wins " << countPlayer1 << " and " << player2 << " wins " << countPlayer2 << endl;
+   }
+   
+   
+  
+  
+   
+ 
+  
+    
+    
+   
+
+   return 0;
+
+}
